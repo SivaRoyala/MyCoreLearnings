@@ -36,9 +36,17 @@ public class RotateArray {
 	}
 	
 	public int[] rotateArrayUsingBubbleSort(int[] nums, int steps){
-		if(nums == null || steps > nums.length){
-			
+		if(nums == null || steps < 0){
+			throw new IllegalArgumentException("Illegal Argument");
 		}
-		return null;
+		
+		for(int i=0; i < steps; i++){
+			for(int j = nums.length - 1; j > 0; j -- ){
+				int temp = nums[j];
+				nums[j] = nums[j-1];
+				nums[j-1] = temp;
+			}
+		}
+		return nums;
 	}
 }
